@@ -1,13 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const pool = require('./db');
+const authRoutes = require('./routes/auth.routes');
 require('dotenv').config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Endpoint de verificación de estado y conexión a la BD
+// Rutas
+app.use('/api/auth', authRoutes);
+
 app.get('/api/health', async (req, res) => {
   try {
     const result = await pool.query('SELECT NOW()');
