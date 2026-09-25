@@ -4,6 +4,7 @@ const pool = require('./db');
 const authRoutes = require('./routes/auth.routes');
 const profileRoutes = require('./routes/profile.routes');
 const shootingRoutes = require('./routes/shooting.routes');
+const matchRoutes = require('./routes/match.routes');
 require('dotenv').config();
 
 const app = express();
@@ -14,6 +15,8 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/shooting-sessions', shootingRoutes);
+// 2. Montar las rutas de partidos
+app.use('/api/matches', matchRoutes);
 
 app.get('/api/health', async (req, res) => {
   try {
