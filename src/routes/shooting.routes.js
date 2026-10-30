@@ -3,6 +3,15 @@ const router = express.Router();
 const pool = require('../db');
 const authenticateToken = require('../middlewares/auth.middleware');
 
+// Función auxiliar para formatear la fecha a YYYY-MM-DD
+const formatDate = (dateString) => {
+  if (!dateString) return null;
+  if (dateString instanceof Date) {
+    return dateString.toISOString().split('T')[0];
+  }
+  return String(dateString).split('T')[0];
+};
+
 // POST /api/shooting-sessions - Crear una nueva sesión de tiro
 router.post('/', authenticateToken, async (req, res) => {
   const userId = req.user.id;
@@ -22,16 +31,25 @@ router.post('/', authenticateToken, async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO shooting_sessions (user_id, session_date, shot_zone, attempts, made, created_at)
-       VALUES ($1, $2, $3, $4, $5, NOW())
-       RETURNING id, user_id, session_date, shot_zone, attempts, made, created_at,
-                 ROUND((made::decimal / attempts) * 100, 2) AS accuracy_percentage`,
+      `INSERT INTO shooting_sessions (user_id, session_date, shot_type, shots_attempted, shots_made, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+       RETURNING id, user_id, session_date::text, 
+                 shot_type AS shot_zone, 
+                 shots_attempted AS attempts, 
+                 shots_made AS made, 
+                 created_at,
+                 ROUND((shots_made::decimal / shots_attempted) * 100, 2) AS accuracy_percentage`,
       [userId, session_date, shot_zone, attempts, made]
     );
 
+    const session = {
+      ...result.rows[0],
+      session_date: formatDate(result.rows[0].session_date),
+    };
+
     res.status(201).json({
       message: 'Registro de tiro creado exitosamente',
-      session: result.rows[0],
+      session,
     });
   } catch (error) {
     res.status(500).json({ message: 'Error al registrar la sesión de tiro', error: error.message });
@@ -43,12 +61,20 @@ router.get('/', authenticateToken, async (req, res) => {
   try {
     const userId = req.user.id;
     const result = await pool.query(
-      'SELECT * FROM shooting_sessions WHERE user_id = $1 ORDER BY session_date DESC',
+      `SELECT id, user_id, session_date::text, 
+              shot_type AS shot_zone, 
+              shots_attempted AS attempts, 
+              shots_made AS made, 
+              created_at 
+       FROM shooting_sessions 
+       WHERE user_id = $1 
+       ORDER BY session_date DESC`,
       [userId]
     );
 
     const sessions = result.rows.map((session) => ({
       ...session,
+      session_date: formatDate(session.session_date),
       accuracy_percentage: session.attempts > 0 ? Math.round((session.made / session.attempts) * 100 * 100) / 100 : 0,
     }));
 
@@ -66,7 +92,6 @@ router.put('/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
   const { session_date, shot_zone, attempts, made } = req.body;
 
-  // Validar que el registro pertenezca al usuario autenticado
   try {
     const userId = req.user.id;
     const existingSession = await pool.query(
@@ -78,13 +103,11 @@ router.put('/:id', authenticateToken, async (req, res) => {
       return res.status(404).json({ message: 'Registro no encontrado' });
     }
 
-    // Validar formato de fecha
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
     if (session_date && !dateRegex.test(session_date)) {
       return res.status(400).json({ message: 'session_date debe tener el formato YYYY-MM-DD' });
     }
 
-    // Validar que made no sea mayor que attempts
     if (made !== undefined && attempts !== undefined && made > attempts) {
       return res.status(400).json({ message: 'made no puede ser mayor que attempts' });
     }
@@ -92,17 +115,27 @@ router.put('/:id', authenticateToken, async (req, res) => {
     const result = await pool.query(
       `UPDATE shooting_sessions SET
          session_date = COALESCE($2, session_date),
-         shot_zone = COALESCE($3, shot_zone),
-         attempts = COALESCE($4, attempts),
-         made = COALESCE($5, made)
-       WHERE id = $1
-       RETURNING *`,
-      [id, session_date, shot_zone, attempts, made]
+         shot_type = COALESCE($3, shot_type),
+         shots_attempted = COALESCE($4, shots_attempted),
+         shots_made = COALESCE($5, shots_made),
+         updated_at = NOW()
+       WHERE id = $1 AND user_id = $6
+       RETURNING id, user_id, session_date::text, 
+                 shot_type AS shot_zone, 
+                 shots_attempted AS attempts, 
+                 shots_made AS made, 
+                 created_at`,
+      [id, session_date, shot_zone, attempts, made, userId]
     );
+
+    const session = {
+      ...result.rows[0],
+      session_date: formatDate(result.rows[0].session_date),
+    };
 
     res.json({
       message: 'Registro de tiro actualizado exitosamente',
-      session: result.rows[0],
+      session,
     });
   } catch (error) {
     res.status(500).json({ message: 'Error al actualizar el registro de tiro', error: error.message });
