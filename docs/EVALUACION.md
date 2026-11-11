@@ -26,7 +26,7 @@
 
 | Autor | Commits | Código (LOC) | Tests (LOC) | Docs (LOC) | Días activos | % del código |
 |---|---:|---:|---:|---:|---:|---:|
-| Agustin Marthi | 8 | 642 | 0 | 3 | 7 | 100% |
+| Agustin Marthi | 9 | 642 | 0 | 3 | 8 | 100% |
 
 > _El LOC de autoría lo calcula RepoSense sobre el historial y puede diferir del LOC de código del análisis de calidad (que mira solo el estado de `main`)._
 
@@ -36,7 +36,7 @@
 
 | Alumno | Sesiones | Cumplimiento | Pausa | Recencia | IC | Nivel | Para subir de nivel |
 |---|--:|--:|--:|--:|--:|--|--|
-| Agustin Marthi | 12 | 48% | 14 d | 64% | **40** | No aprueba | Cumplimiento 48% (mín. 50%) |
+| Agustin Marthi | 13 | 51% | 14 d | 100% | **47** | Aprueba | Cumplimiento 51% (mín. 100%); Pausa 14 d (máx. 5 d) |
 
 > Para aprobar el IC: **2 sesiones por semana** sostenidas, sin pausas mayores a **10 días** y con actividad en las **últimas 2 semanas**. Se excluyen merges, bots y al docente. Zona horaria UTC-3.
 
@@ -158,11 +158,11 @@ Criterios que hoy están en rojo y, para cada uno, una explicación breve de **c
 
 ## 6. Actividad en clase (miércoles y viernes)
 
-> Se consideran las **23 clases** del período (miércoles y viernes, según `config/constancia.json`; feriados y semanas sin clase descontados). `Commits` = commits de trabajo (no-merge); `Merges` = merges de PR (también son push). Los días sin actividad dicen **sin actividad**.
+> Se consideran las **26 clases** del período (miércoles y viernes, según `config/constancia.json`; feriados y semanas sin clase descontados). `Commits` = commits de trabajo (no-merge); `Merges` = merges de PR (también son push). Los días sin actividad dicen **sin actividad**.
 
 ### Agustin Marthi
 
-**12/23 clases con actividad** · 25 commits · 15 merges
+**14/26 clases con actividad** · 31 commits · 16 merges
 
 | Fecha | Actividad | Repositorios | Commits / merges |
 |---|:--:|---|--:|
@@ -189,6 +189,9 @@ Criterios que hoy están en rojo y, para cada uno, una explicación breve de **c
 | 2026-10-23 | No | sin actividad | 0 / 0 |
 | 2026-10-28 | **Sí** | frontend-vue | 2 / 0 |
 | 2026-10-30 | **Sí** | backend-express | 1 / 1 |
+| 2026-11-04 | No | sin actividad | 0 / 0 |
+| 2026-11-06 | **Sí** | frontend-vue | 2 / 0 |
+| 2026-11-11 | **Sí** | backend-express, frontend-vue | 4 / 1 |
 
 ## 7. Anexo: dónde mirar
 
