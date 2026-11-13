@@ -3,7 +3,7 @@
 
 > Documento **generado automáticamente** por la cátedra de Programación III (RepoSense + análisis de calidad + constancia). **No editar a mano**: se regenera en cada evaluación.
 > Rama evaluada: `main`. Análisis **heurístico** (regex + métricas): es una criba para orientar la revisión, **no una nota**.
-> Generado: 2026-11-11.
+> Generado: 2026-11-13.
 
 ## 1. Veredicto
 
@@ -36,7 +36,7 @@
 
 | Alumno | Sesiones | Cumplimiento | Pausa | Recencia | IC | Nivel | Para subir de nivel |
 |---|--:|--:|--:|--:|--:|--|--|
-| Agustin Marthi | 13 | 51% | 14 d | 100% | **47** | Aprueba | Cumplimiento 51% (mín. 100%); Pausa 14 d (máx. 5 d) |
+| Agustin Marthi | 11 | 42% | 14 d | 86% | **39** | No aprueba | Cumplimiento 42% (mín. 50%) |
 
 > Para aprobar el IC: **2 sesiones por semana** sostenidas, sin pausas mayores a **10 días** y con actividad en las **últimas 2 semanas**. Se excluyen merges, bots y al docente. Zona horaria UTC-3.
 
@@ -156,18 +156,18 @@ Criterios que hoy están en rojo y, para cada uno, una explicación breve de **c
 
 > **Tests (informativo):** hoy tenés **0** archivo(s) de test; la meta es **5**, pero **no** es una compuerta del semáforo. Para acercarte, agregá tests de los flujos principales (servicios y endpoints) y corré la suite con coverage.
 
-## 6. Actividad en clase (miércoles y viernes)
+## 6. Actividad en clase y fuera de clase
 
-> Se consideran las **26 clases** del período (miércoles y viernes, según `config/constancia.json`; feriados y semanas sin clase descontados). `Commits` = commits de trabajo (no-merge); `Merges` = merges de PR (también son push). Los días sin actividad dicen **sin actividad**.
+> Se consideran las **27 clases** del período (miércoles y viernes, según `config/constancia.json`; feriados y semanas sin clase descontados). Para cada alumno se muestra la actividad **en cada clase** y también la actividad **fuera de los días de clase** (fines de semana u otros días). `Commits` = commits de trabajo (no-merge); `Merges` = merges de PR (también son push). Los días sin actividad dicen **sin actividad**.
 
 ### Agustin Marthi
 
-**14/26 clases con actividad** · 31 commits · 16 merges
+**12/27 clases con actividad** · total del período: 22 commits · 10 merges
 
 | Fecha | Actividad | Repositorios | Commits / merges |
 |---|:--:|---|--:|
 | 2026-08-14 | No | sin actividad | 0 / 0 |
-| 2026-08-19 | **Sí** | backend-express, backend-fastapi, frontend-vue | 3 / 0 |
+| 2026-08-19 | **Sí** | backend-express, frontend-vue | 2 / 0 |
 | 2026-08-21 | No | sin actividad | 0 / 0 |
 | 2026-08-26 | No | sin actividad | 0 / 0 |
 | 2026-08-28 | No | sin actividad | 0 / 0 |
@@ -178,10 +178,10 @@ Criterios que hoy están en rojo y, para cada uno, una explicación breve de **c
 | 2026-09-16 | No | sin actividad | 0 / 0 |
 | 2026-09-18 | No | sin actividad | 0 / 0 |
 | 2026-09-23 | **Sí** | backend-express | 1 / 2 |
-| 2026-09-25 | **Sí** | backend-express, backend-fastapi | 3 / 2 |
+| 2026-09-25 | **Sí** | backend-express | 1 / 1 |
 | 2026-09-30 | No | sin actividad | 0 / 0 |
-| 2026-10-02 | **Sí** | backend-fastapi | 3 / 3 |
-| 2026-10-07 | **Sí** | backend-fastapi | 3 / 2 |
+| 2026-10-02 | No | sin actividad | 0 / 0 |
+| 2026-10-07 | No | sin actividad | 0 / 0 |
 | 2026-10-09 | **Sí** | frontend-vue | 1 / 1 |
 | 2026-10-14 | **Sí** | frontend-vue | 4 / 2 |
 | 2026-10-16 | No | sin actividad | 0 / 0 |
@@ -192,6 +192,9 @@ Criterios que hoy están en rojo y, para cada uno, una explicación breve de **c
 | 2026-11-04 | No | sin actividad | 0 / 0 |
 | 2026-11-06 | **Sí** | frontend-vue | 2 / 0 |
 | 2026-11-11 | **Sí** | backend-express, frontend-vue | 4 / 1 |
+| 2026-11-13 | No | sin actividad | 0 / 0 |
+
+**Fuera de clase:** sin actividad registrada.
 
 ## 7. Anexo: dónde mirar
 
