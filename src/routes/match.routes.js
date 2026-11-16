@@ -3,6 +3,19 @@ const router = express.Router();
 const pool = require('../db');
 const authenticateToken = require('../middlewares/auth.middleware');
 
+const STAT_FIELDS = ['minutes_played', 'points', 'rebounds', 'assists', 'steals', 'blocks', 'turnovers', 'fouls'];
+
+// Las estadísticas, si vienen, deben ser enteros mayores o iguales a 0
+function invalidStat(body) {
+  for (const f of STAT_FIELDS) {
+    const v = body[f];
+    if (v !== undefined && v !== null && v !== '' && (!Number.isInteger(Number(v)) || Number(v) < 0)) {
+      return `${f} debe ser un entero mayor o igual a 0`;
+    }
+  }
+  return null;
+}
+
 // GET /api/matches - Listar todos los partidos del usuario
 router.get('/', authenticateToken, async (req, res) => {
   try {
@@ -42,6 +55,11 @@ router.post('/', authenticateToken, async (req, res) => {
 
   if (!match_date || !opponent) {
     return res.status(400).json({ message: 'La fecha (match_date) y el rival (opponent) son obligatorios' });
+  }
+
+  const statError = invalidStat(req.body);
+  if (statError) {
+    return res.status(400).json({ message: statError });
   }
 
   try {
@@ -91,6 +109,11 @@ router.put('/:id', authenticateToken, async (req, res) => {
     turnovers,
     fouls
   } = req.body;
+
+  const statError = invalidStat(req.body);
+  if (statError) {
+    return res.status(400).json({ message: statError });
+  }
 
   try {
     const checkMatch = await pool.query(
