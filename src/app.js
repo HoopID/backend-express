@@ -27,7 +27,10 @@ app.get('/api/health', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor Express corriendo en el puerto ${PORT}`);
-});
+// Solo escucha cuando se ejecuta directamente (node src/app.js); los tests importan `app` sin levantar el puerto
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT);
+}
+
+module.exports = app;
