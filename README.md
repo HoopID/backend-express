@@ -5,6 +5,3 @@
 Detalle completo en [`docs/EVALUACION.md`](docs/EVALUACION.md).
 <!-- calidad:fin -->
 
-# backend-express
-
-npx nodemon src/app.js

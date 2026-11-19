@@ -3,7 +3,7 @@
 
 > Documento **generado automáticamente** por la cátedra de Programación III (RepoSense + análisis de calidad + constancia). **No editar a mano**: se regenera en cada evaluación.
 > Rama evaluada: `main`. Análisis **heurístico** (regex + métricas): es una criba para orientar la revisión, **no una nota**.
-> Generado: 2026-11-18.
+> Generado: 2026-11-19.
 
 ## 1. Veredicto
 
@@ -26,7 +26,7 @@
 
 | Autor | Commits | Código (LOC) | Tests (LOC) | Docs (LOC) | Días activos | % del código |
 |---|---:|---:|---:|---:|---:|---:|
-| Agustin Marthi | 10 | 728 | 557 | 3 | 9 | 100% |
+| Agustin Marthi | 12 | 728 | 557 | 3 | 10 | 100% |
 
 > _El LOC de autoría lo calcula RepoSense sobre el historial y puede diferir del LOC de código del análisis de calidad (que mira solo el estado de `main`)._
 
@@ -36,7 +36,7 @@
 
 | Alumno | Sesiones | Cumplimiento | Pausa | Recencia | IC | Nivel | Para subir de nivel |
 |---|--:|--:|--:|--:|--:|--|--|
-| Agustin Marthi | 12 | 43% | 14 d | 86% | **40** | No aprueba | Cumplimiento 43% (mín. 50%) |
+| Agustin Marthi | 13 | 46% | 14 d | 93% | **43** | No aprueba | Cumplimiento 46% (mín. 50%) |
 
 > Para aprobar el IC: **2 sesiones por semana** sostenidas, sin pausas mayores a **10 días** y con actividad en las **últimas 2 semanas**. Se excluyen merges, bots y al docente. Zona horaria UTC-3.
 
@@ -144,7 +144,7 @@ _Cumple **todos** los criterios del semáforo: no hay nada que arreglar para apr
 
 ### Agustin Marthi
 
-**12/28 clases con actividad** · total del período: 22 commits · 10 merges
+**13/28 clases con actividad** · total del período: 26 commits · 11 merges
 
 | Fecha | Actividad | Repositorios | Commits / merges |
 |---|:--:|---|--:|
@@ -175,7 +175,7 @@ _Cumple **todos** los criterios del semáforo: no hay nada que arreglar para apr
 | 2026-11-06 | **Sí** | frontend-vue | 2 / 0 |
 | 2026-11-11 | **Sí** | backend-express, frontend-vue | 4 / 1 |
 | 2026-11-13 | No | sin actividad | 0 / 0 |
-| 2026-11-18 | No | sin actividad | 0 / 0 |
+| 2026-11-18 | **Sí** | backend-express, frontend-vue | 4 / 1 |
 
 **Fuera de clase:** 1 fecha(s) con actividad · 3 commits · 1 merges
 
